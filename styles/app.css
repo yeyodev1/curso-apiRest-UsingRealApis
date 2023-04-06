@@ -383,6 +383,7 @@ footer {
 
 .relatedMovies-scrollContainer .movie-container {
 	display: inline-block;
+	color: red;
 	margin-right: 8px;
 }
 

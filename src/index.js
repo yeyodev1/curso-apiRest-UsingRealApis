@@ -7,7 +7,6 @@ const getTrendingPreview = async () => {
 	const movies = data.results;
 
 	movies.forEach((movie) => {
-		console.log(movie);
 		const trendindPreviewMoviesContainer = document.querySelector(
 			"#trendingPreview .trendingPreview-movieList"
 		);
@@ -26,5 +25,32 @@ const getTrendingPreview = async () => {
 		trendindPreviewMoviesContainer.appendChild(movieContainer);
 	});
 };
+const getCategoriesPreview = async () => {
+	const res = await fetch(
+		`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
+	);
+	const data = await res.json();
+
+	const categories = data.genres;
+
+	categories.forEach((category) => {
+		const previewCategoriesContainer = document.querySelector(
+			"#categoriesPreview .categoriesPreview-list"
+		);
+
+		const categoryContainer = document.createElement("div");
+		categoryContainer.classList.add("category-container");
+
+		const categoryTitle = document.createElement("h3");
+		categoryTitle.classList.add("category-title");
+		categoryTitle.setAttribute("id", "id" + category.id);
+		const categoryTitleText = document.createTextNode(category.name);
+
+		categoryContainer.appendChild(categoryTitle);
+		categoryTitle.appendChild(categoryTitleText);
+		previewCategoriesContainer.appendChild(categoryContainer);
+	});
+};
 
 getTrendingPreview();
+getCategoriesPreview();
