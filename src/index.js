@@ -53,6 +53,3 @@ const getCategoriesPreview = async () => {
 		previewCategoriesContainer.appendChild(categoryContainer);
 	});
 };
-
-getTrendingPreview();
-getCategoriesPreview();
